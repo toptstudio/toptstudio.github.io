@@ -111,9 +111,15 @@
             letter-spacing: 0.05em;
             padding: 0.35rem 0.75rem;
             border-radius: 100px;
-            background-color: var(--accent);
+            background-color: #0284c7;
             color: #ffffff;
-            border: 1px solid var(--border);
+            border: none;
+        }
+        @media (prefers-color-scheme: dark) {
+            .badge {
+                background-color: #38bdf8;
+                color: #000000;
+            }
         }
         .section-title {
             font-size: 0.85rem;
