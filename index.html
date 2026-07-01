@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topt Studio</title>
+    <meta name="description" content="Privacy-first, open-source Android tools – crafted by Topt Studio.">
+    <meta name="keywords" content="toptstudio, topt studio, open source android, privacy tools">
+    <meta name="google-site-verification" content="ViTr8FLhE26he7eZkgC0wPBn3iAiixocOQ7C7f8VST4">
+    <link rel="icon" type="image/webp" sizes="16x16" href="favicons/favicon-16x16.webp">
+    <link rel="icon" type="image/webp" sizes="32x32" href="favicons/favicon-32x32.webp">
+    <link rel="icon" type="image/webp" sizes="48x48" href="favicons/favicon-48x48.webp">
+    <link rel="icon" type="image/webp" sizes="96x96" href="favicons/favicon-96x96.webp">
+    <link rel="icon" type="image/webp" sizes="192x192" href="favicons/icon-192x192.webp">
+    <link rel="icon" type="image/webp" sizes="512x512" href="favicons/icon-512x512.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+    <meta name="msapplication-TileImage" content="favicons/mstile-150x150.png">
+    <style>
+        :root {
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --text: #171717;
+            --muted: #525252;
+            --border: #e5e5e5;
+            --accent: #0284c7;
+            --accent-dim: #e0f2fe;
+            --shadow: rgba(0, 0, 0, 0.04);
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0a0a0a;
+                --card-bg: #141414;
+                --text: #f5f5f5;
+                --muted: #a3a3a3;
+                --border: #262626;
+                --accent: #38bdf8;
+                --accent-dim: #0c4a6e;
+                --shadow: rgba(0, 0, 0, 0.4);
+            }
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1.5rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            width: 100%;
+            max-width: 580px;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+        header {
+            margin-bottom: 2.5rem;
+            text-align: left;
+        }
+        .brand-row {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .logo {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 2.5px solid var(--accent);
+            background-color: var(--card-bg);
+            box-shadow: 0 4px 12px var(--shadow);
+            object-fit: cover;
+            flex-shrink: 0;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .logo:hover {
+            border-color: color-mix(in srgb, var(--accent) 70%, white);
+            box-shadow: 0 6px 18px var(--shadow);
+        }
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+        .description {
+            color: var(--muted);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .badge-container {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.35rem 0.75rem;
+            border-radius: 100px;
+            background-color: var(--accent-dim);
+            color: var(--accent);
+            border: 1px solid var(--border);
+        }
+        .section-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            margin-bottom: 1rem;
+        }
+        .project-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 0;
+        }
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.25rem;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px var(--shadow);
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+        }
+        .project-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            box-shadow: 0 6px 16px var(--shadow);
+        }
+        .project-info h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .project-info p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        .arrow-icon {
+            color: var(--muted);
+            font-size: 1.25rem;
+            transition: transform 0.2s, color 0.2s;
+        }
+        .project-card:hover .arrow-icon {
+            color: var(--accent);
+            transform: translateX(3px);
+        }
+        @media (max-width: 500px) {
+            body {
+                padding: 1.5rem 1rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .description {
+                font-size: 1rem;
+            }
+            .brand-row {
+                gap: 0.75rem;
+            }
+            .logo {
+                width: 48px;
+                height: 48px;
+            }
+            .project-card {
+                padding: 1rem;
+            }
+            .project-info h3 {
+                font-size: 1rem;
+            }
+        }
+        @media (max-width: 380px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            .description {
+                font-size: 0.9rem;
+            }
+            .logo {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        @supports not (color: color-mix(in srgb, red, blue)) {
+            .logo:hover {
+                border-color: var(--accent);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="brand-row">
+                <img src="favicons/favicon-96x96.webp" alt="Topt Studio logo" class="logo" width="96" height="96">
+                <h1>Topt Studio</h1>
+            </div>
+            <p class="description">
+                Crafting lightweight, open‑source utilities designed to put user privacy and data sovereignty first.
+            </p>
+            <div class="badge-container">
+                <span class="badge">No Trackers</span>
+                <span class="badge">FOSS</span>
+                <span class="badge">Android</span>
+            </div>
+        </header>
+        <main>
+            <p class="section-title">Featured Repositories</p>
+            <div class="project-grid">
+                <a href="https://github.com/toptstudio?tab=repositories" class="project-card" target="_blank" rel="noopener">
+                    <div class="project-info">
+                        <h3>Android Tools Repository</h3>
+                        <p>Explore our library of clean, zero-permission system utilities.</p>
+                    </div>
+                    <div class="arrow-icon">→</div>
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
